@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo — DYEL by LZ Studios</title>
+<meta name="description" content="See how DYEL syncs an athlete's workout to their coach's screen in real time, with AI form correction built in.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;600;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">LZ STUDIOS</div>
+    <div class="nav-links">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-cta" href="index.html#contact">Get in touch</a>
+    </div>
+  </div>
+</nav>
+
+<header class="demo-hero">
+  <div class="wrap">
+    <span class="eyebrow">Concept Demo</span>
+    <h1>See the sync happen</h1>
+    <p>Illustrative product concept — this is the moment DYEL is built around: an athlete logs a set, and it's on their coach's screen before they've racked the bar.</p>
+  </div>
+</header>
+
+<section class="section">
+  <div class="wrap">
+    <div class="demo-stage">
+
+      <!-- PHONE 1: ATHLETE -->
+      <div class="phone">
+        <div class="screen">
+          <div class="screen-bar">Bench Press — Set 3</div>
+          <div class="screen-body">
+            <div class="big-stat">225 lb × 5</div>
+            <div class="small-meta">RPE 8 · Rest 2:30</div>
+            <div class="pose-card">
+              <span class="tag">POSE CHECK</span>
+              <p>Bar path drifting forward on rep 4 — tuck elbows 5°</p>
+            </div>
+            <div class="demo-btn" id="logSetBtn" role="button" tabindex="0" onclick="triggerSync()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();triggerSync();}">LOG SET</div>
+          </div>
+          <div class="screen-foot">ATHLETE</div>
+        </div>
+      </div>
+
+      <!-- SYNC LINK -->
+      <div class="sync-link">
+        <div class="circle" id="syncCircle">⇒</div>
+        <div class="label">LIVE<br>SYNC</div>
+      </div>
+
+      <!-- PHONE 2: COACH -->
+      <div class="phone">
+        <div class="screen">
+          <div class="screen-bar">Coach · Live</div>
+          <div class="screen-body">
+            <div id="coachWaiting" class="coach-waiting">
+              <p>Waiting for activity from Alex R…</p>
+              <span class="waiting-dot"></span>
+            </div>
+            <div id="coachContent" class="coach-content">
+              <div class="athlete-row">
+                <div class="athlete-avatar">A</div>
+                <div>
+                  <div class="name">Alex R. · Bench Press</div>
+                  <div class="sub" id="coachTimestamp">Set 3 just logged — now</div>
+                </div>
+              </div>
+              <div class="flag-card">
+                <span class="tag">FLAGGED FOR REVIEW</span>
+                <p>Elbow flare on rep 4. Suggested cue sent to athlete automatically.</p>
+              </div>
+              <div class="demo-btn dark">SEND VOICE NOTE</div>
+            </div>
+          </div>
+          <div class="screen-foot">TRAINER</div>
+        </div>
+      </div>
+
+    </div>
+    <p class="demo-caption" id="demoCaption">Tap "LOG SET" on the athlete's phone and watch the coach's screen update instantly.</p>
+    <p class="demo-caption" style="margin-top:-40px;"><a href="#" class="nav-link" onclick="resetDemo();return false;">↺ Replay demo</a></p>
+  </div>
+</section>
+
+<section class="cta-section" id="contact">
+  <div class="wrap">
+    <h2>Want to see more?</h2>
+    <p>Reach out and we'll walk you through the full product vision.</p>
+    <div class="cta-row">
+      <a class="btn-primary" href="mailto:info@lzstudios.fit">Email us</a>
+      <a class="btn-ghost" href="index.html">Back to home</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>&copy; 2026 LZ Studios. DYEL is a product of LZ Studios.</p>
+  </div>
+</footer>
+
+<script>
+  function triggerSync(){
+    var logBtn = document.getElementById('logSetBtn');
+    var syncCircle = document.getElementById('syncCircle');
+    var waiting = document.getElementById('coachWaiting');
+    var content = document.getElementById('coachContent');
+    var caption = document.getElementById('demoCaption');
+
+    if (logBtn.classList.contains('is-done')) return;
+
+    logBtn.textContent = '✓ LOGGED';
+    logBtn.classList.add('is-done');
+    syncCircle.classList.add('is-pulsing');
+
+    setTimeout(function(){
+      waiting.style.display = 'none';
+      content.style.display = 'flex';
+      requestAnimationFrame(function(){
+        requestAnimationFrame(function(){
+          content.classList.add('is-visible');
+        });
+      });
+      caption.textContent = 'That\'s it — no lag, no weekly check-in. The coach sees it the moment it happens.';
+    }, 550);
+  }
+
+  function resetDemo(){
+    var logBtn = document.getElementById('logSetBtn');
+    var syncCircle = document.getElementById('syncCircle');
+    var waiting = document.getElementById('coachWaiting');
+    var content = document.getElementById('coachContent');
+    var caption = document.getElementById('demoCaption');
+
+    logBtn.textContent = 'LOG SET';
+    logBtn.classList.remove('is-done');
+    syncCircle.classList.remove('is-pulsing');
+    waiting.style.display = 'flex';
+    content.classList.remove('is-visible');
+    content.style.display = 'none';
+    caption.textContent = 'Tap "LOG SET" on the athlete\'s phone and watch the coach\'s screen update instantly.';
+  }
+</script>
+
+</body>
+</html>
