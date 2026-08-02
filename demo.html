@@ -28,13 +28,23 @@
 <header class="demo-hero">
   <div class="wrap">
     <span class="eyebrow">Concept Demo</span>
-    <h1>See the sync happen</h1>
-    <p>Illustrative product concept — this is the moment DYEL is built around: an athlete logs a set, and it's on their coach's screen before they've racked the bar.</p>
+    <h1>Five things no other fitness app does together</h1>
+    <p>Illustrative product concepts — pick a scenario below to see how it works.</p>
   </div>
 </header>
 
 <section class="section">
   <div class="wrap">
+    <div class="scenario-tabs">
+      <button class="scenario-tab active" onclick="showScenario('sync', this)">Real-Time Sync</button>
+      <button class="scenario-tab" onclick="showScenario('form', this)">AI Form Correction</button>
+      <button class="scenario-tab" onclick="showScenario('video', this)">Coaching Videos</button>
+      <button class="scenario-tab" onclick="showScenario('gym', this)">Gym Mapping</button>
+      <button class="scenario-tab" onclick="showScenario('autosync', this)">Auto-Sync</button>
+    </div>
+
+    <!-- SCENARIO 1: REAL-TIME SYNC -->
+    <div class="scenario-panel active" id="scenario-sync">
     <div class="demo-stage">
 
       <div class="phone-col">
@@ -154,6 +164,203 @@
     <p class="demo-caption" id="demoCaption">Tap "LOG SET" on the athlete's phone and watch the coach's screen update instantly.</p>
     <p class="demo-note">Set logging works three ways — the athlete taps it in manually, the AI camera counts it automatically, or the coach logs it live from their own phone. This demo shows the manual path.</p>
     <p class="demo-caption" style="margin-top:20px;"><a href="#" class="nav-link" onclick="resetDemo();return false;">↺ Replay demo</a></p>
+    </div>
+
+    <!-- SCENARIO 2: AI FORM CORRECTION -->
+    <div class="scenario-panel" id="scenario-form" hidden>
+    <div class="demo-stage single">
+      <div class="phone-col">
+      <div class="phone">
+        <div class="screen">
+          <div class="app-topbar">
+            <span class="topbar-back">←</span>
+            <div class="topbar-title">
+              <div class="title-main">Recording</div>
+              <div class="title-sub">Bench Press · Rep 4</div>
+            </div>
+            <span class="topbar-more">⋯</span>
+          </div>
+          <div class="screen-body app-body">
+            <div class="pose-viewfinder">
+              <svg viewBox="0 0 200 220" width="100%" height="100%">
+                <line x1="100" y1="42" x2="100" y2="110" stroke="#ffffff" stroke-width="2"/>
+                <line x1="60" y1="60" x2="140" y2="60" stroke="#ffffff" stroke-width="2"/>
+                <line x1="60" y1="60" x2="38" y2="92" stroke="#FF3B30" stroke-width="3"/>
+                <line x1="38" y1="92" x2="55" y2="128" stroke="#FF3B30" stroke-width="3"/>
+                <line x1="140" y1="60" x2="160" y2="95" stroke="#ffffff" stroke-width="2"/>
+                <line x1="160" y1="95" x2="145" y2="130" stroke="#ffffff" stroke-width="2"/>
+                <line x1="75" y1="110" x2="125" y2="110" stroke="#ffffff" stroke-width="2"/>
+                <line x1="75" y1="110" x2="70" y2="170" stroke="#ffffff" stroke-width="2"/>
+                <line x1="70" y1="170" x2="65" y2="208" stroke="#ffffff" stroke-width="2"/>
+                <line x1="125" y1="110" x2="130" y2="170" stroke="#ffffff" stroke-width="2"/>
+                <line x1="130" y1="170" x2="135" y2="208" stroke="#ffffff" stroke-width="2"/>
+                <circle cx="100" cy="30" r="12" fill="none" stroke="#ffffff" stroke-width="2"/>
+                <circle cx="38" cy="92" r="5" fill="#FF3B30"/>
+                <circle cx="60" cy="60" r="4" fill="#ffffff"/>
+                <circle cx="140" cy="60" r="4" fill="#ffffff"/>
+                <circle cx="160" cy="95" r="4" fill="#ffffff"/>
+                <circle cx="75" cy="110" r="4" fill="#ffffff"/>
+                <circle cx="125" cy="110" r="4" fill="#ffffff"/>
+                <circle cx="70" cy="170" r="4" fill="#ffffff"/>
+                <circle cx="130" cy="170" r="4" fill="#ffffff"/>
+              </svg>
+              <span class="viewfinder-badge">TRACKING LIVE</span>
+            </div>
+            <div class="flag-card" style="margin-top:14px;">
+              <span class="tag">CORRECTION CUE</span>
+              <p>Left elbow flaring 12° past ideal — tuck it in before your next rep.</p>
+            </div>
+            <div class="small-meta" style="text-align:center; margin-top:10px;">Detected and cued in real time — no video review needed later.</div>
+          </div>
+          <div class="bottom-tabbar">
+            <div class="tab-item"><span class="tab-dot"></span>Home</div>
+            <div class="tab-item active"><span class="tab-dot"></span>Workout</div>
+            <div class="tab-item"><span class="tab-dot"></span>Progress</div>
+            <div class="tab-item"><span class="tab-dot"></span>Profile</div>
+          </div>
+        </div>
+      </div>
+      <p class="phone-label">Athlete — mid-set</p>
+      </div>
+    </div>
+    <p class="demo-caption">Pose estimation runs during the set itself, not after — the same AI that logs your rep is watching your form.</p>
+    </div>
+
+    <!-- SCENARIO 3: COACHING VIDEOS -->
+    <div class="scenario-panel" id="scenario-video" hidden>
+    <div class="demo-stage single">
+      <div class="phone-col">
+      <div class="phone">
+        <div class="screen">
+          <div class="app-topbar">
+            <span class="topbar-back">←</span>
+            <div class="topbar-title">
+              <div class="title-main">Bench Press</div>
+              <div class="title-sub">Coach Demos</div>
+            </div>
+            <span class="topbar-more">⋯</span>
+          </div>
+          <div class="screen-body app-body">
+            <div class="video-card best">
+              <div class="video-thumb">▶</div>
+              <div class="video-info">
+                <div class="video-name">Coach Marcus T.</div>
+                <div class="video-meta">6'1" · 210 lb · 🇺🇸 English</div>
+                <span class="match-badge">BEST MATCH FOR YOU</span>
+              </div>
+            </div>
+            <div class="video-card">
+              <div class="video-thumb">▶</div>
+              <div class="video-info">
+                <div class="video-name">Coach Priya N.</div>
+                <div class="video-meta">5'5" · 135 lb · 🇮🇳 Hindi</div>
+              </div>
+            </div>
+            <div class="video-card">
+              <div class="video-thumb">▶</div>
+              <div class="video-info">
+                <div class="video-name">Coach Diego R.</div>
+                <div class="video-meta">5'10" · 175 lb · 🇪🇸 Spanish</div>
+              </div>
+            </div>
+            <div class="small-meta" style="text-align:center; margin-top:8px;">Verified demos in 7 languages, matched to a build similar to yours.</div>
+          </div>
+          <div class="bottom-tabbar">
+            <div class="tab-item"><span class="tab-dot"></span>Home</div>
+            <div class="tab-item active"><span class="tab-dot"></span>Workout</div>
+            <div class="tab-item"><span class="tab-dot"></span>Progress</div>
+            <div class="tab-item"><span class="tab-dot"></span>Profile</div>
+          </div>
+        </div>
+      </div>
+      <p class="phone-label">Athlete</p>
+      </div>
+    </div>
+    <p class="demo-caption">When several verified demos exist for one move, DYEL surfaces the coach whose build is closest to yours — not just the first result.</p>
+    </div>
+
+    <!-- SCENARIO 4: GYM MAPPING -->
+    <div class="scenario-panel" id="scenario-gym" hidden>
+    <div class="demo-stage single">
+      <div class="phone-col">
+      <div class="phone">
+        <div class="screen">
+          <div class="app-topbar">
+            <span class="topbar-back">←</span>
+            <div class="topbar-title">
+              <div class="title-main">Gym Scan</div>
+              <div class="title-sub">Iron Yard Gym · Lisbon</div>
+            </div>
+            <span class="topbar-more">⋯</span>
+          </div>
+          <div class="screen-body app-body">
+            <div class="scan-status">✓ SCAN COMPLETE</div>
+            <div class="set-history" style="margin-top:8px;">
+              <div class="set-row"><span style="width:auto; flex:1;">Leg Extension</span><span class="check">✓ Calibrated</span></div>
+              <div class="set-row"><span style="width:auto; flex:1;">Squat Rack</span><span class="check">✓ Calibrated</span></div>
+              <div class="set-row"><span style="width:auto; flex:1;">Dumbbells 5–100 lb</span><span class="check">✓ Calibrated</span></div>
+              <div class="set-row"><span style="width:auto; flex:1;">Cable Machine</span><span class="check">✓ Calibrated</span></div>
+            </div>
+            <div class="pose-card" style="margin-top:10px;">
+              <span class="tag">WHY THIS MATTERS</span>
+              <p>This gym's 40kg leg extension loads differently than your usual one — your plan auto-adjusts to match.</p>
+            </div>
+            <div class="small-meta" style="text-align:center; margin-top:8px;">Saved to DYEL — the next traveler here never has to rescan.</div>
+          </div>
+          <div class="bottom-tabbar">
+            <div class="tab-item"><span class="tab-dot"></span>Home</div>
+            <div class="tab-item active"><span class="tab-dot"></span>Workout</div>
+            <div class="tab-item"><span class="tab-dot"></span>Progress</div>
+            <div class="tab-item"><span class="tab-dot"></span>Profile</div>
+          </div>
+        </div>
+      </div>
+      <p class="phone-label">Athlete — traveling</p>
+      </div>
+    </div>
+    <p class="demo-caption">Scan a gym once with your camera — DYEL identifies the equipment and calibrates real load differences between brands.</p>
+    </div>
+
+    <!-- SCENARIO 5: AUTO-SYNC -->
+    <div class="scenario-panel" id="scenario-autosync" hidden>
+    <div class="demo-stage single">
+      <div class="phone-col">
+      <div class="phone">
+        <div class="screen">
+          <div class="app-topbar">
+            <span class="topbar-back">←</span>
+            <div class="topbar-title">
+              <div class="title-main">New Location</div>
+              <div class="title-sub">Detected</div>
+            </div>
+            <span class="topbar-more">⋯</span>
+          </div>
+          <div class="screen-body app-body">
+            <div class="pose-card">
+              <span class="tag">NOT YOUR USUAL GYM</span>
+              <p>You're at Gold's Gym Downtown. Share your location once to auto-adjust today's workout?</p>
+            </div>
+            <div class="demo-btn" style="margin:12px 0;">SHARE LOCATION</div>
+            <div class="flag-card">
+              <span class="tag">✓ WORKOUT RECALIBRATED</span>
+              <p>Leg Press swapped for Hack Squat — the equipment available at this location.</p>
+            </div>
+            <div class="small-meta" style="text-align:center; margin-top:8px;">If this gym isn't mapped yet, your coach is notified to adjust it manually instead.</div>
+          </div>
+          <div class="bottom-tabbar">
+            <div class="tab-item"><span class="tab-dot"></span>Home</div>
+            <div class="tab-item active"><span class="tab-dot"></span>Workout</div>
+            <div class="tab-item"><span class="tab-dot"></span>Progress</div>
+            <div class="tab-item"><span class="tab-dot"></span>Profile</div>
+          </div>
+        </div>
+      </div>
+      <p class="phone-label">Athlete — new gym</p>
+      </div>
+    </div>
+    <p class="demo-caption">Check into a mapped gym and your plan updates itself — no manual editing required.</p>
+    </div>
+
   </div>
 </section>
 
@@ -175,6 +382,23 @@
 </footer>
 
 <script>
+  function showScenario(name, btn){
+    var panels = document.querySelectorAll('.scenario-panel');
+    for (var i = 0; i < panels.length; i++){
+      panels[i].hidden = true;
+      panels[i].classList.remove('active');
+    }
+    var target = document.getElementById('scenario-' + name);
+    target.hidden = false;
+    target.classList.add('active');
+
+    var tabs = document.querySelectorAll('.scenario-tab');
+    for (var j = 0; j < tabs.length; j++){
+      tabs[j].classList.remove('active');
+    }
+    btn.classList.add('active');
+  }
+
   function triggerSync(){
     var logBtn = document.getElementById('logSetBtn');
     var syncCircle = document.getElementById('syncCircle');
