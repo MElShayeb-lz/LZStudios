@@ -37,21 +37,55 @@
   <div class="wrap">
     <div class="demo-stage">
 
+      <div class="phone-col">
       <!-- PHONE 1: ATHLETE -->
       <div class="phone">
         <div class="screen">
-          <div class="screen-bar">Bench Press — Set 3</div>
-          <div class="screen-body">
-            <div class="big-stat">225 lb × 5</div>
-            <div class="small-meta">RPE 8 · Rest 2:30</div>
+          <div class="app-topbar">
+            <span class="topbar-back">←</span>
+            <div class="topbar-title">
+              <div class="title-main">Push Day</div>
+              <div class="title-sub">Exercise 3 of 6</div>
+            </div>
+            <span class="topbar-more">⋯</span>
+          </div>
+          <div class="screen-body app-body">
+            <div class="exercise-tag">CHEST · TRICEPS</div>
+            <h4 class="exercise-name">Bench Press</h4>
+
+            <div class="set-history">
+              <div class="set-row"><span>Set 1</span><span>225 lb × 5</span><span class="check">✓</span></div>
+              <div class="set-row"><span>Set 2</span><span>225 lb × 5</span><span class="check">✓</span></div>
+            </div>
+
+            <div class="current-set">
+              <div class="set-row-label">SET 3</div>
+              <div class="big-stat">225 lb × 5</div>
+              <div class="small-meta">RPE 8 · Rest 2:30</div>
+            </div>
+
+            <div class="log-method-tabs">
+              <span class="method-tab active">Manual</span>
+              <span class="method-tab">AI Camera</span>
+              <span class="method-tab">Coach</span>
+            </div>
+
             <div class="pose-card">
               <span class="tag">POSE CHECK</span>
               <p>Bar path drifting forward on rep 4 — tuck elbows 5°</p>
             </div>
+
             <div class="demo-btn" id="logSetBtn" role="button" tabindex="0" onclick="triggerSync()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();triggerSync();}">LOG SET</div>
           </div>
-          <div class="screen-foot">ATHLETE</div>
+          <div class="bottom-tabbar">
+            <div class="tab-item"><span class="tab-dot"></span>Home</div>
+            <div class="tab-item active"><span class="tab-dot"></span>Workout</div>
+            <div class="tab-item"><span class="tab-dot"></span>Progress</div>
+            <div class="tab-item"><span class="tab-dot"></span>Profile</div>
+          </div>
         </div>
+      </div>
+      <p class="phone-label">Athlete</p>
       </div>
 
       <!-- SYNC LINK -->
@@ -60,37 +94,66 @@
         <div class="label">LIVE<br>SYNC</div>
       </div>
 
+      <div class="phone-col">
       <!-- PHONE 2: COACH -->
       <div class="phone">
         <div class="screen">
-          <div class="screen-bar">Coach · Live</div>
-          <div class="screen-body">
-            <div id="coachWaiting" class="coach-waiting">
-              <p>Waiting for activity from Alex R…</p>
-              <span class="waiting-dot"></span>
-            </div>
-            <div id="coachContent" class="coach-content">
-              <div class="athlete-row">
+          <div class="app-topbar">
+            <span class="topbar-title-solo">Live Activity</span>
+            <span class="topbar-more">⋯</span>
+          </div>
+          <div class="screen-body app-body">
+            <div class="client-list">
+              <div class="client-row">
                 <div class="athlete-avatar">A</div>
-                <div>
-                  <div class="name">Alex R. · Bench Press</div>
-                  <div class="sub" id="coachTimestamp">Set 3 just logged — now</div>
+                <div class="client-info">
+                  <div class="name">Alex R.</div>
+                  <div class="sub" id="alexStatus">Bench Press · no activity yet</div>
+                </div>
+                <span class="live-dot" id="alexDot"></span>
+              </div>
+              <div class="client-row">
+                <div class="athlete-avatar muted">J</div>
+                <div class="client-info">
+                  <div class="name">Jordan M.</div>
+                  <div class="sub">Resting — last set 12m ago</div>
                 </div>
               </div>
-              <div class="flag-card">
-                <span class="tag">FLAGGED FOR REVIEW</span>
-                <p>Elbow flare on rep 4. Suggested cue sent to athlete automatically.</p>
+              <div class="client-row">
+                <div class="athlete-avatar muted">S</div>
+                <div class="client-info">
+                  <div class="name">Sam K.</div>
+                  <div class="sub">Not started today</div>
+                </div>
               </div>
-              <div class="demo-btn dark">SEND VOICE NOTE</div>
+            </div>
+
+            <div class="activity-panel">
+              <div id="coachWaiting" class="coach-waiting-inline">Tap "LOG SET" on Alex's phone to see it appear here.</div>
+              <div id="coachContent" class="coach-content">
+                <div class="flag-card">
+                  <span class="tag">FLAGGED FOR REVIEW</span>
+                  <p>Elbow flare on rep 4. Suggested cue sent to athlete automatically.</p>
+                </div>
+                <div class="demo-btn dark">SEND VOICE NOTE</div>
+              </div>
             </div>
           </div>
-          <div class="screen-foot">TRAINER</div>
+          <div class="bottom-tabbar">
+            <div class="tab-item active"><span class="tab-dot"></span>Clients</div>
+            <div class="tab-item"><span class="tab-dot"></span>Schedule</div>
+            <div class="tab-item"><span class="tab-dot"></span>Messages</div>
+            <div class="tab-item"><span class="tab-dot"></span>Profile</div>
+          </div>
         </div>
+      </div>
+      <p class="phone-label">Trainer</p>
       </div>
 
     </div>
     <p class="demo-caption" id="demoCaption">Tap "LOG SET" on the athlete's phone and watch the coach's screen update instantly.</p>
-    <p class="demo-caption" style="margin-top:-40px;"><a href="#" class="nav-link" onclick="resetDemo();return false;">↺ Replay demo</a></p>
+    <p class="demo-note">Set logging works three ways — the athlete taps it in manually, the AI camera counts it automatically, or the coach logs it live from their own phone. This demo shows the manual path.</p>
+    <p class="demo-caption" style="margin-top:20px;"><a href="#" class="nav-link" onclick="resetDemo();return false;">↺ Replay demo</a></p>
   </div>
 </section>
 
@@ -118,6 +181,8 @@
     var waiting = document.getElementById('coachWaiting');
     var content = document.getElementById('coachContent');
     var caption = document.getElementById('demoCaption');
+    var alexStatus = document.getElementById('alexStatus');
+    var alexDot = document.getElementById('alexDot');
 
     if (logBtn.classList.contains('is-done')) return;
 
@@ -133,6 +198,8 @@
           content.classList.add('is-visible');
         });
       });
+      alexStatus.textContent = 'Bench Press · Set 3 logged — now';
+      alexDot.classList.add('is-live');
       caption.textContent = 'That\'s it — no lag, no weekly check-in. The coach sees it the moment it happens.';
     }, 550);
   }
@@ -143,13 +210,17 @@
     var waiting = document.getElementById('coachWaiting');
     var content = document.getElementById('coachContent');
     var caption = document.getElementById('demoCaption');
+    var alexStatus = document.getElementById('alexStatus');
+    var alexDot = document.getElementById('alexDot');
 
     logBtn.textContent = 'LOG SET';
     logBtn.classList.remove('is-done');
     syncCircle.classList.remove('is-pulsing');
-    waiting.style.display = 'flex';
+    waiting.style.display = 'block';
     content.classList.remove('is-visible');
     content.style.display = 'none';
+    alexStatus.textContent = 'Bench Press · no activity yet';
+    alexDot.classList.remove('is-live');
     caption.textContent = 'Tap "LOG SET" on the athlete\'s phone and watch the coach\'s screen update instantly.';
   }
 </script>
